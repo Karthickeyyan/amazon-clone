@@ -35,17 +35,17 @@ function Payment() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setProcessing(true);
+    setProcessing("true");
 
     const payload = await stripe
-      .confirmCardPayment(clientSecret, {
+      .confirmCardPayment("clientSecret", {
         payment_method: { card: elements.getElement(CardElement) },
       })
       .then(({ paymentIntent }) => {
         //payment Intent = payment Confirmation
         setSucceeded(true);
         setError(null);
-        setProcessing(false);
+        setProcessing("false");
 
         history.replace("/orders");
       });
